@@ -27,11 +27,16 @@ function isEmailValid(email) {
 function checkRequired(inputArr) {
   inputArr.forEach(function(input) {
     if(input.value.trim() === '') {
-      showError(input, 'field is required')
+      showError(input, `${getFieldName(input)} is required`)
     } else {
       showSuccess(input)
     }
   })
+}
+
+// Get fieldname
+function getFieldName(input) {
+  return input.id.charAt(0).toUpperCase() + input.id.slice(1);
 }
 
 form.addEventListener('submit', function (e) {
