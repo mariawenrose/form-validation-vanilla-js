@@ -27,7 +27,7 @@ function checkEmail(input) {
   }
 }
 
-// Check Requried Fields
+// Check Required Fields
 function checkRequired(inputArr) {
   inputArr.forEach(function(input) {
     if(input.value.trim() === '') {
@@ -50,6 +50,13 @@ function checkLength(input, min, max) {
 }
 
 // Check Passwords Match
+// and check length
+
+function checkPasswordsMatch(input1, input2, min) {
+  if (input1.value !== input2.value) {
+    showError(input2, `Sorry these passwords don't match`)
+  }
+}
 
 // Get fieldname
 function getFieldName(input) {
@@ -64,4 +71,5 @@ form.addEventListener('submit', function (e) {
   checkLength(username, 3, 15)
   checkLength(password, 6, 25)
   checkEmail(email)
+  checkPasswordsMatch(password, confirmPassword)
 });
